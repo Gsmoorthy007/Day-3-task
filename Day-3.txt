@@ -1,0 +1,74 @@
+                   1)
+
+   let obj1 = {name: "person1",age: '5'};
+
+   let obj2 = {age: '5',name: "person1"};
+
+let keys1 = Object.keys(obj1)
+let keys2 = Object.keys(obj2)
+//console.log(keys1,keys2)
+if(keys1.length== keys2.length){
+    for(let key in obj1){
+        if(obj1[key] !=obj2[key]){
+            fiag =  false;
+        }
+    }
+}else{
+    flag = false
+}
+if(flag == true){
+    console.log("objects are ")
+}
+
+function compareJSON(obj1,obj2){
+    let str1 = JSON.stringify(obj1, Object.keys(obj1).sort());
+    let str2 = JSON.stringify(obj2, Object.keys(obj2).sort());
+    
+    return str1 === str2;
+    }
+    let objA = {name:"person 1",age:5};
+    let objB = {age:5,name:"person 1"};
+    let areEqul = compareJSON(objA ,objB);
+     console.log(areEqul)
+
+                       2)
+ let XMLHttpRequest = require('xhr2');
+
+let xhr = new XMLHttpRequest();
+
+xhr.open('GET', 'https://restcountries.com/v3.1/all');
+
+
+xhr.onload = function () {
+    let users = JSON.parse(xhr.responseText);
+
+    for (let user of users) {
+        console.log(user["flag"])
+    }
+}
+
+xhr.send();
+
+                       3)
+
+let XMLHttpRequest = require('xhr2');
+
+
+let xhr = new XMLHttpRequest();
+
+xhr.open('GET', 'https://restcountries.com/v3.1/all');
+xhr.onload = function () {
+    let users = JSON.parse(xhr.responseText);
+
+    let userNames = [];
+
+    for (let user of users) {
+        userNames.push(user['name']);
+        userNames.push(user['region']);
+        userNames.push(user['subregion']);
+        userNames.push(user['population']);
+    }
+
+    console.log(userNames);
+};
+ xhr.send();
